@@ -1,0 +1,572 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#050816;
+    color:white;
+}
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+.login-page{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-box{
+    width:360px;
+    background:#0b1023;
+    padding:30px;
+    border-radius:20px;
+    border:1px solid #1f2945;
+}
+
+.login-box h1{
+    text-align:center;
+    margin-bottom:25px;
+    color:#8b5cf6;
+}
+
+.login-box input{
+    width:100%;
+    padding:15px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:12px;
+    background:#111827;
+    color:white;
+    outline:none;
+}
+
+.login-box button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#6d28d9;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+/* =========================
+   ADMIN PANEL
+========================= */
+
+.admin-panel{
+    display:none;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:260px;
+    background:#0b1023;
+    border-right:1px solid #1f2945;
+    padding:25px;
+    position:fixed;
+    height:100%;
+}
+
+.logo{
+    font-size:28px;
+    color:#8b5cf6;
+    margin-bottom:40px;
+    font-weight:bold;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:white;
+    padding:15px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    transition:.3s;
+}
+
+.menu a:hover,
+.menu a.active{
+    background:linear-gradient(to right,#6d28d9,#4f46e5);
+}
+
+/* MAIN */
+
+.main{
+    margin-left:260px;
+    padding:35px;
+}
+
+/* TOPBAR */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.topbar h1{
+    font-size:40px;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#0b1023;
+    border:1px solid #1f2945;
+    border-radius:20px;
+    padding:25px;
+}
+
+.card i{
+    font-size:35px;
+    color:#8b5cf6;
+    margin-bottom:15px;
+}
+
+.card h2{
+    font-size:35px;
+}
+
+.card p{
+    color:#9ca3af;
+}
+
+/* TABLE */
+
+.table-box{
+    margin-top:35px;
+    background:#0b1023;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid #1f2945;
+}
+
+.table-header{
+    padding:20px;
+    border-bottom:1px solid #1f2945;
+    font-size:24px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:18px;
+    text-align:left;
+}
+
+th{
+    background:#111827;
+}
+
+tr{
+    border-bottom:1px solid #1f2945;
+}
+
+/* BUTTONS */
+
+.action-btn{
+    padding:10px 15px;
+    border:none;
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
+}
+
+.view{
+    background:#2563eb;
+}
+
+.delete{
+    background:#dc2626;
+}
+
+.logout{
+    margin-top:25px;
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    background:#dc2626;
+    color:white;
+    cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .sidebar{
+        width:100%;
+        position:relative;
+        height:auto;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .admin-panel{
+        display:block;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+
+<div class="login-page" id="loginPage">
+
+<div class="login-box">
+
+<h1>Admin Login</h1>
+
+<input type="email"
+id="email"
+placeholder="Enter Admin Email">
+
+<input type="password"
+id="password"
+placeholder="Enter Password">
+
+<button onclick="loginAdmin()">
+Login
+</button>
+
+</div>
+
+</div>
+
+<!-- ADMIN PANEL -->
+
+<div class="admin-panel"
+id="adminPanel">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logo">
+<i class="fa-solid fa-shield"></i>
+ Admin
+</div>
+
+<div class="menu">
+
+<a href="#" class="active">
+<i class="fa-solid fa-chart-line"></i>
+Dashboard
+</a>
+
+<a href="#">
+<i class="fa-solid fa-users"></i>
+Users
+</a>
+
+<a href="#">
+<i class="fa-solid fa-briefcase"></i>
+Portfolios
+</a>
+
+<a href="#">
+<i class="fa-solid fa-layer-group"></i>
+Templates
+</a>
+
+<a href="#">
+<i class="fa-solid fa-gear"></i>
+Settings
+</a>
+
+</div>
+
+<button class="logout"
+onclick="logoutAdmin()">
+Logout
+</button>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<div class="topbar">
+
+<h1>Admin Dashboard</h1>
+
+</div>
+
+<!-- CARDS -->
+
+<div class="cards">
+
+<div class="card">
+<i class="fa-solid fa-users"></i>
+<h2 id="usersCount">120</h2>
+<p>Total Users</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-eye"></i>
+<h2 id="visitorCount">12000</h2>
+<p>Visitors</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-download"></i>
+<h2 id="downloadCount">340</h2>
+<p>Downloads</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-briefcase"></i>
+<h2>56</h2>
+<p>Portfolios</p>
+</div>
+
+</div>
+
+<!-- TABLE -->
+
+<div class="table-box">
+
+<div class="table-header">
+Recent Users
+</div>
+
+<table>
+
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+<tr>
+
+<td>Ram</td>
+
+<td>ram@gmail.com</td>
+
+<td>Active</td>
+
+<td>
+
+<button class="action-btn view">
+View
+</button>
+
+<button class="action-btn delete"
+onclick="deleteUser(this)">
+Delete
+</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Phani</td>
+
+<td>phani@gmail.com</td>
+
+<td>Active</td>
+
+<td>
+
+<button class="action-btn view">
+View
+</button>
+
+<button class="action-btn delete"
+onclick="deleteUser(this)">
+Delete
+</button>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+function loginAdmin(){
+
+    const email =
+    document.getElementById("email").value;
+
+    const password =
+    document.getElementById("password").value;
+
+    if(
+        email === "admin@gmail.com"
+        &&
+        password === "123456"
+    ){
+
+        document.getElementById("loginPage")
+        .style.display = "none";
+
+        document.getElementById("adminPanel")
+        .style.display = "flex";
+
+        alert("Admin Login Success!");
+
+    }else{
+
+        alert(
+        "Wrong Admin Email or Password!"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   ACTIVE MENU
+========================= */
+
+const menuLinks =
+document.querySelectorAll(".menu a");
+
+menuLinks.forEach(link=>{
+
+    link.addEventListener("click",function(){
+
+        menuLinks.forEach(nav=>{
+            nav.classList.remove("active");
+        });
+
+        this.classList.add("active");
+
+    });
+
+});
+
+
+/* =========================
+   DELETE USER
+========================= */
+
+function deleteUser(button){
+
+    const confirmDelete =
+    confirm("Delete this user?");
+
+    if(confirmDelete){
+
+        const row =
+        button.parentElement.parentElement;
+
+        row.remove();
+
+        alert("User Deleted!");
+
+    }
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logoutAdmin(){
+
+    location.reload();
+
+}
+
+
+/* =========================
+   LIVE ANALYTICS
+========================= */
+
+let users = 120;
+let visitors = 12000;
+let downloads = 340;
+
+setInterval(()=>{
+
+    users += Math.floor(Math.random()*3);
+
+    visitors += Math.floor(Math.random()*10);
+
+    downloads += Math.floor(Math.random()*5);
+
+    document.getElementById("usersCount")
+    .innerText = users;
+
+    document.getElementById("visitorCount")
+    .innerText = visitors;
+
+    document.getElementById("downloadCount")
+    .innerText = downloads;
+
+},5000);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,369 @@
+// auth.js
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+
+  onAuthStateChanged,
+  signOut
+
+}
+
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc
+
+}
+
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+
+// FIREBASE CONFIG
+const firebaseConfig = {
+apiKey: "AIzaSyDG3XPT6ilTZ1l-UEx0XNb1NKzPDFZ_9to",
+  authDomain: "portfolio-3825f.firebaseapp.com",
+  projectId: "portfolio-3825f",
+  storageBucket: "portfolio-3825f.firebasestorage.app",
+  messagingSenderId: "210733631271",
+  appId: "1:210733631271:web:50b45ac29adab42ace8b02",
+  measurementId: "G-LB7KSM55GL"
+  
+
+};
+
+
+// INITIALIZE FIREBASE
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+const db =
+getFirestore(app);
+
+const provider =
+new GoogleAuthProvider();
+
+
+
+// ==========================
+// SIGNUP
+// ==========================
+
+const signupBtn =
+document.getElementById("signupBtn");
+
+if(signupBtn){
+
+signupBtn.addEventListener(
+"click",
+
+async () => {
+
+  const name =
+  document.getElementById("name").value;
+
+  const email =
+  document.getElementById("signupEmail").value;
+
+  const password =
+  document.getElementById("signupPassword").value;
+
+  const confirmPassword =
+  document.getElementById("confirmPassword").value;
+
+
+  // PASSWORD CHECK
+  if(password !== confirmPassword){
+
+    alert("Passwords do not match");
+
+    return;
+
+  }
+
+
+  try{
+
+    // CREATE ACCOUNT
+    const userCredential =
+
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    const user =
+    userCredential.user;
+
+
+    // SAVE USER DATA
+    await setDoc(
+
+      doc(db, "users", user.uid),
+
+      {
+
+        uid: user.uid,
+
+        name: name,
+
+        email: email,
+
+        createdAt:
+        new Date()
+
+      }
+
+    );
+
+
+    alert("Account Created 🔥");
+
+    window.location.href =
+    "Dashboard.html";
+
+  }
+
+  catch(error){
+
+    console.log(error);
+
+    alert(error.message);
+
+  }
+
+});
+
+}
+
+
+
+// ==========================
+// LOGIN
+// ==========================
+
+const loginBtn =
+document.getElementById("loginBtn");
+
+if(loginBtn){
+
+loginBtn.addEventListener(
+"click",
+
+async () => {
+
+  const email =
+  document.getElementById("email").value;
+
+  const password =
+  document.getElementById("password").value;
+
+
+  try{
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    alert("Login Success 🔥");
+
+    window.location.href =
+    "Dashboard.html";
+
+  }
+
+  catch(error){
+
+    console.log(error);
+
+    alert(error.message);
+
+  }
+
+});
+
+}
+
+
+
+// ==========================
+// GOOGLE LOGIN
+// ==========================
+
+const googleBtn =
+document.getElementById("googleBtn");
+
+if(googleBtn){
+
+googleBtn.addEventListener(
+"click",
+
+async () => {
+
+  try{
+
+    const result =
+
+    await signInWithPopup(
+      auth,
+      provider
+    );
+
+    const user =
+    result.user;
+
+
+    // SAVE GOOGLE USER
+    await setDoc(
+
+      doc(db, "users", user.uid),
+
+      {
+
+        uid: user.uid,
+
+        name: user.displayName,
+
+        email: user.email,
+
+        photo: user.photoURL,
+
+        createdAt:
+        new Date()
+
+      },
+
+      { merge:true }
+
+    );
+
+
+    alert("Google Login Success 🔥");
+
+    window.location.href =
+    "Dashboard.html";
+
+  }
+
+  catch(error){
+
+    console.log(error);
+
+    alert(error.message);
+
+  }
+
+});
+
+}
+
+
+
+// ==========================
+// DASHBOARD USER DATA
+// ==========================
+
+const userName =
+document.getElementById("userName");
+
+const userEmail =
+document.getElementById("userEmail");
+
+const userPhoto =
+document.getElementById("userPhoto");
+
+
+onAuthStateChanged(auth,
+
+async (user) => {
+
+  if(user){
+
+    const docRef =
+
+    doc(db, "users", user.uid);
+
+    const docSnap =
+
+    await getDoc(docRef);
+
+
+    if(docSnap.exists()){
+
+      const data =
+      docSnap.data();
+
+
+      if(userName){
+
+        userName.innerText =
+        data.name;
+
+      }
+
+      if(userEmail){
+
+        userEmail.innerText =
+        data.email;
+
+      }
+
+      if(userPhoto){
+
+        userPhoto.src =
+        data.photo ||
+        "default.png";
+
+      }
+
+    }
+
+  }
+
+});
+
+
+
+// ==========================
+// LOGOUT
+// ==========================
+
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+if(logoutBtn){
+
+logoutBtn.addEventListener(
+"click",
+
+async () => {
+
+  await signOut(auth);
+
+  alert("Logged Out");
+
+  window.location.href =
+  "login.html";
+
+});
+
+}

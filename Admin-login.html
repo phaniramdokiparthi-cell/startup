@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Admin Login</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#050816;
+    font-family:Arial;
+}
+
+.box{
+    width:350px;
+    background:#0b1023;
+    padding:30px;
+    border-radius:20px;
+    border:1px solid #1f2945;
+}
+
+h1{
+    color:white;
+    text-align:center;
+    margin-bottom:25px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:12px;
+    background:#111827;
+    color:white;
+    outline:none;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#6d28d9;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+</style>
+</head>
+<body>
+
+<div class="box">
+
+<h1>Admin Login</h1>
+
+<input type="email"
+id="adminEmail"
+placeholder="Enter Admin Email">
+
+<input type="password"
+id="adminPassword"
+placeholder="enter password">
+
+<button id="adminLoginBtn">
+Login
+</button>
+
+</div>
+
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>

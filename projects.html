@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+body{
+background:#050816;
+color:white;
+font-family:Arial;
+padding:30px;
+}
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+.card{
+background:#0b1023;
+padding:20px;
+border-radius:20px;
+border:1px solid #1f2945;
+}
+button{
+padding:12px 20px;
+border:none;
+border-radius:10px;
+background:#6d28d9;
+color:white;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<h1>My Projects</h1>
+
+<div class="cards">
+
+<div class="card">
+<h2>Portfolio Website</h2>
+<p>Modern portfolio project.</p>
+<button onclick="viewProject()">View</button>
+</div>
+
+<div class="card">
+<h2>Anime Website</h2>
+<p>Streaming UI design project.</p>
+<button onclick="viewProject()">View</button>
+</div>
+
+</div>
+
+<script>
+function viewProject(){
+alert("Project Opened!");
+}
+</script>
+
+</body>
+</html>

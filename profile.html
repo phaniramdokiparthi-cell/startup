@@ -1,0 +1,68 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile</title>
+<style>
+body{
+background:#050816;
+color:white;
+font-family:Arial;
+padding:30px;
+}
+.profile{
+background:#0b1023;
+padding:30px;
+border-radius:20px;
+max-width:500px;
+margin:auto;
+text-align:center;
+}
+img{
+width:120px;
+height:120px;
+border-radius:50%;
+}
+input{
+width:100%;
+padding:14px;
+margin-top:15px;
+border:none;
+border-radius:10px;
+background:#111827;
+color:white;
+}
+button{
+width:100%;
+padding:15px;
+margin-top:20px;
+border:none;
+border-radius:12px;
+background:#6d28d9;
+color:white;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="profile">
+<img src="https://i.pravatar.cc/150">
+<h1>Profile</h1>
+
+<input type="text" placeholder="Full Name">
+<input type="email" placeholder="Email">
+<input type="text" placeholder="Phone Number">
+
+<button onclick="saveProfile()">Save Profile</button>
+</div>
+
+<script>
+function saveProfile(){
+alert("Profile Saved Successfully!");
+}
+</script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

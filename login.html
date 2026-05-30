@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login Page</title>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#05010f;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    color:white;
+    overflow:hidden;
+    margin: 0%;
+    overflow: scroll;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:#8f3dff;
+    filter:blur(180px);
+    opacity:0.3;
+    top:-100px;
+    left:-100px;
+}
+
+body::after{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:#6f00ff;
+    filter:blur(180px);
+    opacity:0.3;
+    bottom:-100px;
+    right:-100px;
+}
+
+/* MAIN */
+
+.container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+    position:relative;
+    z-index:2;
+}
+
+.login-box{
+    width:600px;
+    background:rgba(10,10,20,0.9);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:35px;
+    padding:30px;
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+    0 0 30px rgba(143,61,255,0.15);
+}
+
+/* TOP */
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.icon-box{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#6f00ff,#9b4dff);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:35px;
+}
+
+.title{
+    flex:1;
+    margin-left:25px;
+}
+
+.title h1{
+    font-size:42px;
+}
+
+.title p{
+    margin-top:10px;
+    color:#aaaaaa;
+    font-size:20px;
+}
+
+.profile{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#140d25;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:35px;
+
+    border:1px solid #2c1f4d;
+}
+
+/* FORM */
+
+form{
+    display:flex;
+    flex-direction:column;
+}
+
+label{
+    margin-bottom:10px;
+    margin-top:20px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.input-box{
+    width:100%;
+    height:75px;
+    background:#0f1120;
+    border:1px solid #24263a;
+    border-radius:18px;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 20px;
+
+    gap:18px;
+}
+
+.input-box i{
+    color:#a6a6a6;
+    font-size:22px;
+}
+
+.input-box input{
+    width:100%;
+    height:100%;
+    background:none;
+    border:none;
+    outline:none;
+    color:white;
+    font-size:22px;
+}
+
+.input-box input::placeholder{
+    color:#777;
+}
+
+.eye{
+    cursor:pointer;
+}
+
+/* BUTTONS */
+
+.signup-btn{
+    width:100%;
+    height:75px;
+    border:none;
+    border-radius:18px;
+    margin-top:35px;
+
+    background:linear-gradient(135deg,#6f00ff,#9b4dff);
+
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.login-btn{
+    width:100%;
+    height:75px;
+
+    margin-top:20px;
+
+    border-radius:18px;
+
+    background:transparent;
+
+    border:1px solid #2c1f4d;
+
+    color:#9b4dff;
+
+    font-size:28px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+/* LINE */
+
+.line-box{
+    display:flex;
+    align-items:center;
+    gap:20px;
+
+    margin-top:35px;
+}
+
+.line{
+    flex:1;
+    height:1px;
+    background:#2a2a2a;
+}
+
+.line-box p{
+    color:#999;
+    font-size:20px;
+}
+
+/* GOOGLE */
+
+.google-btn{
+    width:100%;
+    height:75px;
+
+    border:none;
+
+    border-radius:18px;
+
+    margin-top:30px;
+
+    background:white;
+
+    color:black;
+
+    font-size:25px;
+    font-weight:bold;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:18px;
+
+    cursor:pointer;
+}
+
+.google-btn img{
+    width:35px;
+}
+
+/* GITHUB */
+
+.github-btn{
+    width:100%;
+    height:75px;
+
+    border-radius:18px;
+
+    margin-top:20px;
+
+    background:#0f1120;
+
+    border:1px solid #24263a;
+
+    color:white;
+
+    font-size:25px;
+    font-weight:bold;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:18px;
+
+    cursor:pointer;
+}
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    margin-top:35px;
+}
+
+.footer p{
+    color:#8f3dff;
+    font-size:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="login-box">
+
+        <!-- TOP -->
+
+        <div class="top">
+
+            <div class="icon-box">
+                <i class="fa-regular fa-user"></i>
+            </div>
+
+            <div class="title">
+                <h1>Create Account 🚀</h1>
+                <p>Create your account and get started</p>
+            </div>
+
+            <div class="profile">
+                <i class="fa-regular fa-user"></i>
+            </div>
+
+        </div>
+
+        <!-- FORM -->
+
+        <form>
+
+            <label>Full Name</label>
+
+            <div class="input-box">
+                <i class="fa-regular fa-user"></i>
+                <input type="text" id="name" placeholder="Enter your full name">
+            </div>
+
+            <label>Email</label>
+
+            <div class="input-box">
+                <i class="fa-regular fa-envelope"></i>
+                <input type="email" id="email" placeholder="Enter your email">
+            </div>
+
+            <label>Password</label>
+
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="password" placeholder="Create a password">
+
+                <i class="fa-regular fa-eye eye"></i>
+            </div>
+
+            <label>Confirm Password</label>
+
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="confirmpassword" placeholder="Confirm your password">
+
+                <i class="fa-regular fa-eye eye"></i>
+            </div>
+
+            <!-- BUTTONS -->
+
+            <button class="signup-btn" id="signupBtn">
+                Sign Up
+            </button>
+
+            <button class="login-btn"><a href="sign up.html">
+                Login Instead</a>
+            </button>
+
+        </form>
+
+        <!-- LINE -->
+
+        <div class="line-box">
+
+            <div class="line"></div>
+
+            <p>or continue with</p>
+
+            <div class="line"></div>
+
+        </div>
+
+        <!-- GOOGLE -->
+
+        
+<button  class="google-btn" id="googleBtn">
+
+  <img
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+    alt="Google">
+
+  Continue with Google
+
+</button>
+            
+    
+
+        
+
+
+        
+
+        <!-- GITHUB -->
+
+        <button class="github-btn">
+
+            <i class="fa-brands fa-github"></i>
+
+            Continue with GitHub
+
+        </button>
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+
+            <p>
+                Terms of Service and Privacy Policy.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

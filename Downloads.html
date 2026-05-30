@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Downloads</title>
+<style>
+body{
+background:#050816;
+color:white;
+font-family:Arial;
+padding:30px;
+}
+.download-box{
+background:#0b1023;
+padding:25px;
+border-radius:20px;
+margin-bottom:20px;
+}
+button{
+padding:12px 20px;
+border:none;
+border-radius:10px;
+background:#6d28d9;
+color:white;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<h1>Downloads</h1>
+
+<div class="download-box">
+<h2>Portfolio PDF</h2>
+<button onclick="downloadFile()">Download</button>
+</div>
+
+<div class="download-box">
+<h2>Portfolio Source Code</h2>
+<button onclick="downloadFile()">Download</button>
+</div>
+
+<script>
+function downloadFile(){
+alert("Downloading Started!");
+}
+</script>
+
+</body>
+</html>

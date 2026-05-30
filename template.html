@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Templates</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#050816;
+    color:white;
+}
+
+/* HEADER */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 40px;
+    border-bottom:1px solid #1f2945;
+    background:#0b1023;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:28px;
+    color:#8b5cf6;
+    font-weight:bold;
+}
+
+.search-box{
+    width:300px;
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    padding:14px 20px;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    background:#111827;
+    color:white;
+}
+
+/* PAGE TITLE */
+
+.title{
+    padding:40px;
+}
+
+.title h1{
+    font-size:50px;
+}
+
+.title p{
+    margin-top:10px;
+    color:#9ca3af;
+    font-size:18px;
+}
+
+/* FILTERS */
+
+.filters{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    padding:0 40px 30px;
+}
+
+.filters button{
+    padding:12px 22px;
+    border:none;
+    border-radius:12px;
+    background:#111827;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.filters button:hover,
+.filters .active{
+    background:linear-gradient(to right,#6d28d9,#4f46e5);
+}
+
+/* TEMPLATE GRID */
+
+.templates{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+    padding:0 40px 40px;
+}
+
+/* CARD */
+
+.card{
+    background:#0b1023;
+    border:1px solid #1f2945;
+    border-radius:25px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#6d28d9;
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+/* CONTENT */
+
+.content{
+    padding:20px;
+}
+
+.content h2{
+    margin-bottom:10px;
+}
+
+.content p{
+    color:#9ca3af;
+    line-height:1.6;
+}
+
+/* TAGS */
+
+.tags{
+    margin-top:15px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.tags span{
+    background:#111827;
+    padding:8px 14px;
+    border-radius:30px;
+    font-size:14px;
+}
+
+/* BUTTONS */
+
+.buttons{
+    margin-top:20px;
+    display:flex;
+    gap:15px;
+}
+
+.preview-btn,
+.use-btn{
+    flex:1;
+    padding:14px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.preview-btn{
+    background:#111827;
+    color:white;
+}
+
+.use-btn{
+    background:linear-gradient(to right,#6d28d9,#4f46e5);
+    color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .header{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .search-box{
+        width:100%;
+    }
+
+    .title h1{
+        font-size:35px;
+    }
+
+    .templates{
+        padding:20px;
+    }
+
+    .filters{
+        padding:0 20px 20px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="logo">
+<i class="fa-solid fa-gem"></i>
+PortfolioMaker
+</div>
+
+<div class="search-box">
+<input type="text" placeholder="Search templates...">
+</div>
+
+</div>
+
+<!-- TITLE -->
+
+<div class="title">
+<h1>Portfolio Templates</h1>
+<p>Choose a professional template for your portfolio website.</p>
+</div>
+
+<!-- FILTERS -->
+
+<div class="filters">
+
+<button class="active">All</button>
+<button>Developer</button>
+<button>Creative</button>
+<button>Minimal</button>
+<button>Anime</button>
+<button>Dark</button>
+
+</div>
+
+<!-- TEMPLATE CARDS -->
+
+<div class="templates">
+
+<!-- CARD 1 -->
+
+<div class="card">
+
+<img src="https://picsum.photos/500/300?1">
+
+<div class="content">
+
+<h2>Dark Professional</h2>
+
+<p>
+Modern dark theme portfolio for developers and freelancers.
+</p>
+
+<div class="tags">
+<span>Dark</span>
+<span>Developer</span>
+<span>Modern</span>
+</div>
+
+<div class="buttons">
+<button class="preview-btn">
+Preview
+</button>
+
+<button class="use-btn">
+Use Template
+</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD 2 -->
+
+<div class="card">
+
+<img src="https://picsum.photos/500/300?2">
+
+<div class="content">
+
+<h2>Minimal Clean</h2>
+
+<p>
+Simple and elegant clean portfolio layout with smooth design.
+</p>
+
+<div class="tags">
+<span>Minimal</span>
+<span>Clean</span>
+<span>White</span>
+</div>
+
+<div class="buttons">
+<button class="preview-btn">
+Preview
+</button>
+
+<button class="use-btn">
+Use Template
+</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD 3 -->
+
+<div class="card">
+
+<img src="https://picsum.photos/500/300?3">
+
+<div class="content">
+
+<h2>Neon Portfolio</h2>
+
+<p>
+Futuristic glowing neon style portfolio for creators.
+</p>
+
+<div class="tags">
+<span>Neon</span>
+<span>Purple</span>
+<span>Creative</span>
+</div>
+
+<div class="buttons">
+<button class="preview-btn">
+Preview
+</button>
+
+<button class="use-btn">
+Use Template
+</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD 4 -->
+
+<div class="card">
+
+<img src="https://picsum.photos/500/300?4">
+
+<div class="content">
+
+<h2>Anime Style</h2>
+
+<p>
+Anime inspired portfolio with stylish colorful interface.
+</p>
+
+<div class="tags">
+<span>Anime</span>
+<span>Modern</span>
+<span>Colorful</span>
+</div>
+
+<div class="buttons">
+<button class="preview-btn">
+Preview
+</button>
+
+<button class="use-btn">
+Use Template
+</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD 5 -->
+
+<div class="card">
+
+<img src="https://picsum.photos/500/300?5">
+
+<div class="content">
+
+<h2>Glass UI</h2>
+
+<p>
+Beautiful glassmorphism portfolio template with blur effects.
+</p>
+
+<div class="tags">
+<span>Glass</span>
+<span>UI</span>
+<span>Modern</span>
+</div>
+
+<div class="buttons">
+<button class="preview-btn">
+Preview
+</button>
+
+<button class="use-btn">
+Use Template
+</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD 6 -->
+
+<div class="card">
+
+<img src="https://picsum.photos/500/300?6">
+
+<div class="content">
+
+<h2>Creative Designer</h2>
+
+<p>
+Portfolio specially designed for graphic designers and artists.
+</p>
+
+<div class="tags">
+<span>Creative</span>
+<span>Designer</span>
+<span>Portfolio</span>
+</div>
+
+<div class="buttons">
+<button class="preview-btn">
+Preview
+</button>
+
+<button class="use-btn">
+Use Template
+</button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
