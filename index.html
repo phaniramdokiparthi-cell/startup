@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Maker</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<script>
+
+/* =========================
+   PORTFOLIO MAKER JS
+========================= */
+
+
+/* NAVBAR ACTIVE */
+
+const navItems = document.querySelectorAll("nav ul li");
+
+navItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        navItems.forEach(nav => {
+            nav.classList.remove("active");
+        });
+
+        item.classList.add("active");
+
+    });
+
+});
+
+
+/* =========================
+   NAVIGATION LINKS
+========================= */
+
+navItems[0].addEventListener("click", () => {
+    window.location.href = "index.html";
+});
+
+navItems[1].addEventListener("click", () => {
+    window.location.href = "features.html";
+});
+
+navItems[2].addEventListener("click", () => {
+    window.location.href = "templates.html";
+});
+
+navItems[3].addEventListener("click", () => {
+    window.location.href = "about.html";
+});
+
+navItems[4].addEventListener("click", () => {
+    window.location.href = "pricing.html";
+});
+
+
+/* =========================
+   GET STARTED BUTTON
+========================= */
+
+const startBtn = document.querySelector(".start");
+
+startBtn.addEventListener("click", () => {
+
+    const loggedIn = localStorage.getItem("loggedIn");
+
+    if(loggedIn === "true"){
+
+        window.location.href = "dashboard.html";
+
+    }else{
+
+        alert("Please Login First!");
+
+        window.location.href = "login.html";
+
+    }
+
+});
+
+
+/* =========================
+   VIEW TEMPLATE BUTTON
+========================= */
+
+const templateBtn = document.querySelector(".template-btn");
+
+templateBtn.addEventListener("click", () => {
+
+    window.location.href = "templates.html";
+
+});
+
+
+/* =========================
+   HIRE BUTTON
+========================= */
+
+const hireBtn = document.querySelector(".hire");
+
+hireBtn.addEventListener("click", () => {
+
+    alert("Contact Feature Coming Soon!");
+
+});
+
+
+/* =========================
+   DOWNLOAD CV
+========================= */
+
+const downloadBtn = document.querySelector(".download");
+
+downloadBtn.addEventListener("click", () => {
+
+    alert("CV Download Started!");
+
+});
+
+
+/* =========================
+   ANIMATION ON LOAD
+========================= */
+
+window.addEventListener("load", () => {
+
+    document.body.style.opacity = "1";
+
+});
+
+
+/* =========================
+   SMOOTH SCROLL
+========================= */
+
+document.documentElement.style.scrollBehavior = "smooth";
+
+
+/* =========================
+   FAKE LOGIN CHECK
+========================= */
+
+/*
+Login success ayyaka login page lo:
+
+localStorage.setItem("loggedIn","true");
+
+Logout appudu:
+
+localStorage.removeItem("loggedIn");
+
+*/
+
+
+/* =========================
+   PROJECT CLICK
+========================= */
+
+const projects = document.querySelectorAll(".project");
+
+projects.forEach((project,index)=>{
+
+    project.addEventListener("click",()=>{
+
+        alert("Opening Project " + (index + 1));
+
+    });
+
+});
+
+
+/* =========================
+   FEATURE BOX ANIMATION
+========================= */
+
+const featureBoxes = document.querySelectorAll(".feature-box");
+
+featureBoxes.forEach(box=>{
+
+    box.addEventListener("mouseenter",()=>{
+
+        box.style.transform = "translateY(-8px)";
+        box.style.transition = "0.3s";
+
+    });
+
+    box.addEventListener("mouseleave",()=>{
+
+        box.style.transform = "translateY(0px)";
+
+    });
+
+});
+
+
+/* =========================
+   STATS COUNTER EFFECT
+========================= */
+
+const stats = document.querySelectorAll(".stat-box h1");
+
+stats.forEach(stat=>{
+
+    stat.style.opacity = "0";
+
+    setTimeout(()=>{
+
+        stat.style.opacity = "1";
+        stat.style.transition = "1s";
+
+    },500);
+
+});
+
+
+/* =========================
+   MOBILE MENU (Future Ready)
+========================= */
+
+function openMobileMenu(){
+
+    alert("Mobile Menu Feature Coming Soon!");
+
+}
+
+
+/* =========================
+   SAFE CONSOLE MESSAGE
+========================= */
+
+console.log("Portfolio Maker Loaded Successfully!");
+
+</script>
+<body>
+
+<div class="container">
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+
+            <div class="hexagon">
+                P
+            </div>
+
+            <h1>Portfolio<span>Maker</span></h1>
+
+        </div>
+
+        <ul>
+            <li class="active">Home</li>
+            <li>Features</li>
+            <li>Templates</li>
+            <li>About</li>
+            <li>Pricing</li>
+        </ul>
+
+        <div class="right-nav">
+
+            <div class="theme"><a href="settings.html">
+                <i class="fa-regular fa-sun"></i></a>
+            </div>
+
+            <a href="login.html">
+                <button>
+                Login / Sign up
+            </button></a>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <!-- LEFT -->
+
+        <div class="left">
+
+            <div class="tag">
+                Create. Customize. Impress.
+            </div>
+
+            <h1>
+                Build Your <br>
+                <span>Dream Portfolio</span>
+            </h1>
+
+            <p>
+                Create a professional portfolio in minutes with beautiful templates.
+                Showcase your skills, projects and experience.
+            </p>
+
+            <div class="buttons">
+
+                <button class="start">
+                    Get Started Free
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+                <button class="template-btn">
+                    View Templates
+                </button>
+
+            </div>
+
+            <div class="features">
+
+                <div class="feature-box">
+
+                    <div class="icon">
+                        <i class="fa-regular fa-square-check"></i>
+                    </div>
+
+                    <div>
+                        <h3>Easy to Use</h3>
+                        <p>No coding needed</p>
+                    </div>
+
+                </div>
+
+                <div class="feature-box">
+
+                    <div class="icon">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </div>
+
+                    <div>
+                        <h3>Beautiful Templates</h3>
+                        <p>Modern & responsive</p>
+                    </div>
+
+                </div>
+
+                <div class="feature-box">
+
+                    <div class="icon">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                    <div>
+                        <h3>Export & Share</h3>
+                        <p>PDF, Code & Link</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="right">
+
+            <div class="portfolio-card">
+
+                <p class="small">Home</p>
+
+                <i class="fa-solid fa-magnifying-glass search"></i>
+
+                <div class="text">
+
+                    <h4>Hello, I'm</h4>
+
+                    <h1>Ram</h1>
+
+                    <h3>Web Developer</h3>
+
+                    <p>
+                        I build modern and responsive websites with passion and creativity.
+                    </p>
+
+                    <div class="card-buttons">
+
+                        <button class="hire">
+                            Hire Me
+                        </button>
+
+                        <button class="download">
+                            Download CV
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop" alt="">
+
+                <div class="skills">
+
+                    <h3>My Skills</h3>
+
+                    <div class="skill-boxes">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>React</span>
+                        <span>Node.js</span>
+                    </div>
+
+                </div>
+
+                <div class="projects">
+
+                    <h3>Projects</h3>
+
+                    <div class="project-images">
+
+                        <div class="project"></div>
+                        <div class="project"></div>
+                        <div class="project"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+        <div class="stat-box">
+
+            <i class="fa-regular fa-square"></i>
+
+            <div>
+                <h1>10K+</h1>
+                <p>Portfolios Created</p>
+            </div>
+
+        </div>
+
+        <div class="line"></div>
+
+        <div class="stat-box">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+            <div>
+                <h1>50+</h1>
+                <p>Beautiful Templates</p>
+            </div>
+
+        </div>
+
+        <div class="line"></div>
+
+        <div class="stat-box">
+
+            <i class="fa-regular fa-user"></i>
+
+            <div>
+                <h1>100K+</h1>
+                <p>Happy Users</p>
+            </div>
+
+        </div>
+
+        <div class="line"></div>
+
+        <div class="stat-box">
+
+            <i class="fa-regular fa-clock"></i>
+
+            <div>
+                <h1>24/7</h1>
+                <p>Customer Support</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
